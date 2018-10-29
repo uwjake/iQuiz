@@ -14,16 +14,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let subjectDescriptions = ["Think yourself as a calculator",
                                "About people that live only in your illusion",
                                "Things that people can expain"]
-    
+    let subjectIcons = ["math_icon", "marvel_icon", "science_icon"]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subjectNames.count
     }
     
     @IBOutlet weak var tableView: UITableView!
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 100.0
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = UITableViewCell(style: .subtitle, reuseIdentifier: "Row")
-//        row.imageView?.image = UIImage(named: topicIcons[indexPath.row])
+        row.imageView?.image = UIImage(named: subjectIcons[indexPath.row])
         row.textLabel?.text = subjectNames[indexPath.row]
         row.detailTextLabel?.text = subjectDescriptions[indexPath.row]
         row.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
@@ -31,12 +36,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
 
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        let uiAlert = UIAlertController(title: "You selecred \(subjectNames[row])", message:subjectDescriptions[row] , preferredStyle: .alert)
+        let uiAlert = UIAlertController(title: "You selected \(subjectNames[row])", message:subjectDescriptions[row] , preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         uiAlert.addAction(defaultAction)
-         print(row)
         self.present(uiAlert, animated: true, completion: nil)
         
     }
