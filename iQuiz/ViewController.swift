@@ -35,6 +35,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return row
     }
     
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
 
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let row = indexPath.row
