@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231729CD218FA0390027D5DD /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231729CC218FA0390027D5DD /* QuizViewController.swift */; };
 		2328CF812187F91700B45978 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328CF802187F91700B45978 /* AppData.swift */; };
 		23438E1B2185899800D8D5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E1A2185899800D8D5BE /* AppDelegate.swift */; };
 		23438E1D2185899800D8D5BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E1C2185899800D8D5BE /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		231729CC218FA0390027D5DD /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizViewController.swift; path = ../QuizViewController.swift; sourceTree = "<group>"; };
 		2328CF802187F91700B45978 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		23438E172185899800D8D5BE /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23438E1A2185899800D8D5BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		23438E192185899800D8D5BE /* iQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				231729CC218FA0390027D5DD /* QuizViewController.swift */,
 				23438E1A2185899800D8D5BE /* AppDelegate.swift */,
 				23438E1C2185899800D8D5BE /* ViewController.swift */,
 				23438E1E2185899800D8D5BE /* Main.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				23438E1D2185899800D8D5BE /* ViewController.swift in Sources */,
 				23438E1B2185899800D8D5BE /* AppDelegate.swift in Sources */,
+				231729CD218FA0390027D5DD /* QuizViewController.swift in Sources */,
 				2328CF812187F91700B45978 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
+//        self.performSegue(withIdentifier: "goToQuiz", sender: self)
 //    }
 
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
@@ -45,10 +45,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let uiAlert = UIAlertController(title: "You selected \(subjectNames[row])", message:subjectDescriptions[row] , preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         uiAlert.addAction(defaultAction)
-        self.present(uiAlert, animated: true, completion: nil)
-        
+//        self.present(uiAlert, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "goToQuiz", sender: self)
+        navigationController?.pushViewController(QuizViewController(), animated: true)
+
+
     }
-   
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueIdentifier" {
+            print("I'm segue Identifier!")
+            
+        }
+    }
     
     @IBAction func settingsPressed(_ sender: UIBarButtonItem) {
         let uiAlert = UIAlertController(title: "Settings Button Pressed", message: "Oops, still under development", preferredStyle: .alert)
@@ -59,10 +68,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
+        
+        
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        
+      
+       
         
         // Do any additional setup after loading the view, typically from a nib.
     }
