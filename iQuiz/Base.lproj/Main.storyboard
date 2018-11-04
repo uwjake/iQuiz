@@ -49,7 +49,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="dUh-ex-ec7" id="cux-lp-AOF"/>
-                        <segue destination="AcM-hi-n5W" kind="presentation" identifier="goToQuiz" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="wBj-Ij-kbG"/>
+                        <segue destination="AcM-hi-n5W" kind="presentation" identifier="goToQuiz" modalTransitionStyle="flipHorizontal" id="wBj-Ij-kbG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -59,7 +59,6 @@
         <!--Quiz View Controller-->
         <scene sceneID="Uji-ni-JIE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hzS-An-mwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="AcM-hi-n5W" customClass="QuizViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fko-hg-V5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -76,7 +75,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Home"/>
                                                 <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="show" identifier="backToHome" id="Wmk-Ye-rML"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToHome" modalTransitionStyle="flipHorizontal" id="Wmk-Ye-rML"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -116,7 +115,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5AK-ne-Ebc"/>
                     </view>
+                    <navigationItem key="navigationItem" id="unn-PR-KvI"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzS-An-mwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-932" y="81"/>
         </scene>
