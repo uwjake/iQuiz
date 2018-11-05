@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         uiAlert.addAction(defaultAction)
 //        self.present(uiAlert, animated: true, completion: nil)
         self.performSegue(withIdentifier: "goToQuiz", sender: self)
-        navigationController?.pushViewController(QuizViewController(), animated: true)
+//        navigationController?.pushViewController(QuizViewController(), animated: true)
 
 
     }
@@ -72,6 +72,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.navigationController?.navigationBar.isHidden = true;
         
         tableView?.dataSource = self
         tableView?.delegate = self

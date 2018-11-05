@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I5W-8p-rIh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,43 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dr-NM-UWr">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="iQuiz" id="aSp-R7-0Th">
-                                        <barButtonItem key="rightBarButtonItem" title="Settings" id="JiT-1p-vEn">
-                                            <connections>
-                                                <action selector="settingsPressed:" destination="BYZ-38-t0r" id="9D4-zP-kNg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dUh-ex-ec7">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9dr-NM-UWr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RzR-Lt-ltN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dr-NM-UWr" secondAttribute="trailing" id="bFI-iy-aU6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dUh-ex-ec7" secondAttribute="trailing" id="edz-2W-8Og"/>
-                            <constraint firstItem="dUh-ex-ec7" firstAttribute="top" secondItem="9dr-NM-UWr" secondAttribute="bottom" id="gZ4-t7-iPM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dUh-ex-ec7" secondAttribute="bottom" id="ogO-qi-MtJ"/>
-                            <constraint firstItem="dUh-ex-ec7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tlm-ZH-RPq"/>
-                            <constraint firstItem="9dr-NM-UWr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xab-qE-St7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="dUh-ex-ec7" secondAttribute="top" constant="64" id="1gv-RI-F7K"/>
+                            <constraint firstItem="dUh-ex-ec7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7tf-u6-bK7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dUh-ex-ec7" secondAttribute="trailing" id="Wqu-R6-jze"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dUh-ex-ec7" secondAttribute="bottom" id="naF-04-GQp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5Hf-hr-fyf">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="JiT-1p-vEn">
+                            <connections>
+                                <action selector="settingsPressed:" destination="BYZ-38-t0r" id="9D4-zP-kNg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="dUh-ex-ec7" id="cux-lp-AOF"/>
-                        <segue destination="AcM-hi-n5W" kind="presentation" identifier="goToQuiz" modalTransitionStyle="flipHorizontal" id="wBj-Ij-kbG"/>
+                        <segue destination="AcM-hi-n5W" kind="show" identifier="goToQuiz" id="vaW-ln-uaW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1932" y="81"/>
+            <point key="canvasLocation" x="-1965.217391304348" y="848.64130434782612"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hdQ-9a-nhx">
+            <objects>
+                <navigationController id="I5W-8p-rIh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="muy-Zg-7Bm">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="RVC-FQ-ECa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zqw-VE-RHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2753" y="849"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="Uji-ni-JIE">
@@ -64,62 +72,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vO5-Eu-TXe">
-                                <rect key="frame" x="0.0" y="33" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Quiz" id="vm3-SK-YpG">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="8qv-ep-Qvv">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="daq-P9-wVp">
-                                                <rect key="frame" x="16" y="7" width="41" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Home"/>
-                                                <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToHome" modalTransitionStyle="flipHorizontal" id="Wmk-Ye-rML"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="94P-hW-dl3">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xwd-MS-Xm7">
-                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Next"/>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="pxm-JU-FGx">
-                                <rect key="frame" x="132" y="225" width="46" height="222"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsB-H8-7sJ">
+                                <rect key="frame" x="164" y="489" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjU-zn-eIo">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTb-60-Fqt">
-                                        <rect key="frame" x="0.0" y="64" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbH-TY-IOL">
-                                        <rect key="frame" x="0.0" y="128" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rn9-IN-gap">
-                                        <rect key="frame" x="0.0" y="192" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="K2G-2S-lE2" kind="show" id="UmN-Uy-2Ph"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bco-ry-8n3">
+                                <rect key="frame" x="62" y="218" width="249" height="263"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5AK-ne-Ebc"/>
                     </view>
                     <navigationItem key="navigationItem" id="unn-PR-KvI"/>
+                    <connections>
+                        <outlet property="questionsTableView" destination="bco-ry-8n3" id="nF4-kG-dme"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzS-An-mwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-932" y="81"/>
+            <point key="canvasLocation" x="-1106.4000000000001" y="848.72563718140941"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kFP-2U-M8f">
+            <objects>
+                <viewController id="K2G-2S-lE2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9rS-K6-MCs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7II-KM-PVm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ut-V7-wYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-286" y="849"/>
         </scene>
     </scenes>
 </document>
