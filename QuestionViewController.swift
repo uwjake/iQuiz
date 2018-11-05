@@ -33,6 +33,11 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func onSubmit(_ sender: Any) {
+       submitAnswer()
+       
+    }
+    
+    func submitAnswer(){
         if answerChosen == -1 {
             let uiAlert = UIAlertController(title: "Please select an answer to proceed", message: "" , preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -40,11 +45,13 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
             self.present(uiAlert, animated: true, completion: nil)
         } else {
             AnswerViewController.answerChosen = answerChosen
-            print(HomeViewController.currentQuestion)
+            performSegue(withIdentifier: "QuestionToAnswer", sender: self)
         }
-       
     }
     
+    func backToHome(){
+        performSegue(withIdentifier: "backToHome", sender: self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,11 +87,11 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
-                performSegue(withIdentifier: "backToHome", sender: self)
-                print("Swiped right")
+                backToHome()
+//                print("Swiped right")
             case UISwipeGestureRecognizer.Direction.left:
-
-                print("Swiped left")
+                submitAnswer()
+//                print("Swiped left")
             default:
                 break
             }

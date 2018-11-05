@@ -23,11 +23,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLr-07-WVZ">
-                                <rect key="frame" x="0.0" y="20" width="83" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="iQuiz" id="RkR-93-p1l">
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="p0j-w1-mI1">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ptc-jI-P2r">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ptc-jI-P2r">
                                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Settings"/>
@@ -54,7 +54,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="dUh-ex-ec7" id="cux-lp-AOF"/>
-                        <segue destination="AcM-hi-n5W" kind="presentation" identifier="goToQuiz" modalTransitionStyle="crossDissolve" id="vaW-ln-uaW"/>
+                        <segue destination="AcM-hi-n5W" kind="presentation" identifier="goToQuiz" modalTransitionStyle="flipHorizontal" id="vaW-ln-uaW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,7 +70,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5Q-6r-gFk">
-                                <rect key="frame" x="0.0" y="27" width="83" height="44"/>
+                                <rect key="frame" x="0.0" y="27" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="ajD-4n-bWb"/>
                                 </items>
@@ -85,7 +85,6 @@
                                         <state key="normal" title="Submit"/>
                                         <connections>
                                             <action selector="onSubmit:" destination="AcM-hi-n5W" eventType="touchUpInside" id="tr0-6V-CqB"/>
-                                            <segue destination="K2G-2S-lE2" kind="presentation" identifier="QuestionToAnswer" id="UmN-Uy-2Ph"/>
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bco-ry-8n3">
@@ -133,6 +132,7 @@
                         <outlet property="questionLabel" destination="SZj-Va-wEe" id="DnU-jr-uFC"/>
                         <outlet property="questionsTableView" destination="bco-ry-8n3" id="nF4-kG-dme"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToHome" modalTransitionStyle="flipHorizontal" id="KoY-Br-Rvz"/>
+                        <segue destination="K2G-2S-lE2" kind="presentation" identifier="QuestionToAnswer" modalTransitionStyle="crossDissolve" id="cnC-Cl-1I3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzS-An-mwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,8 +218,9 @@
                         <outlet property="naviTitle" destination="hR1-Bs-x2E" id="u0h-kg-d3G"/>
                         <outlet property="optionsTableView" destination="SVf-eg-vMq" id="o6r-3z-lfh"/>
                         <outlet property="questionLabel" destination="a0P-n3-Tpo" id="qyR-yN-gAQ"/>
-                        <segue destination="AcM-hi-n5W" kind="show" identifier="AnswerToQuestion" id="KWh-sd-ufz"/>
-                        <segue destination="9yP-P2-UDJ" kind="show" identifier="AnswerToResults" id="YsW-6P-4iO"/>
+                        <segue destination="AcM-hi-n5W" kind="presentation" identifier="AnswerToQuestion" modalTransitionStyle="flipHorizontal" id="KWh-sd-ufz"/>
+                        <segue destination="9yP-P2-UDJ" kind="presentation" identifier="AnswerToResults" modalTransitionStyle="flipHorizontal" id="YsW-6P-4iO"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="AnswerToHome" modalTransitionStyle="flipHorizontal" id="Edp-LQ-oNf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ut-V7-wYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,7 +310,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Back To Home"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="SummaryToHome" id="Wft-60-NNo"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="SummaryToHome" modalTransitionStyle="flipHorizontal" id="Wft-60-NNo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -355,6 +356,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="KWh-sd-ufz"/>
-        <segue reference="Wft-60-NNo"/>
+        <segue reference="Edp-LQ-oNf"/>
     </inferredMetricsTieBreakers>
 </document>

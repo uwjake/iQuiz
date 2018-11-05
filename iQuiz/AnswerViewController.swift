@@ -61,20 +61,48 @@ class AnswerViewController: UIViewController,UITableViewDelegate, UITableViewDat
             answerIndicatorLabel.text = "Sorry, wrong answer..."
             answerIndicatorLabel.textColor = .red
         }
-       
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onNextPressed(_ sender: UIButton) {
-        
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.right:
+                backToHome()
+                print("Swiped right")
+            case UISwipeGestureRecognizer.Direction.left:
+                nextButtonEvent()
+                print("Swiped left")
+            default:
+                break
+            }
+        }
+    }
+    func backToHome(){
+        performSegue(withIdentifier: "AnswerToHome", sender: self)
+    }
+    
+    func nextButtonEvent(){
         HomeViewController.currentQuestion += 1
         if HomeViewController.currentQuestion < (HomeViewController.questions.data[HomeViewController.currentSubject]?.count)!
         {
-            print((HomeViewController.questions.data[HomeViewController.currentSubject]?.count)!)
             performSegue(withIdentifier: "AnswerToQuestion", sender: self)
         } else {
-           performSegue(withIdentifier: "AnswerToResults", sender: self)
+            performSegue(withIdentifier: "AnswerToResults", sender: self)
         }
+    }
+    
+    @IBAction func onNextPressed(_ sender: UIButton) {
+        nextButtonEvent()
     }
     
 
