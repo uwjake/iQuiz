@@ -86,7 +86,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         constructQuestions()
         print(HomeViewController.questions.data["Science"]?[0].options)
-//        self.navigationController?.navigationBar.isHidden = true;
+//        self.navigationController?.navigationBar.isHidden = false;
+//        self.navigationController?.interactivePopGestureRecognizer!.isEnabled = true
         
         tableView?.dataSource = self
         tableView?.delegate = self

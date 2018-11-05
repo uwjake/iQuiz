@@ -17,6 +17,7 @@
 		23438E302185899800D8D5BE /* iQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E2F2185899800D8D5BE /* iQuizTests.swift */; };
 		23438E3B2185899800D8D5BE /* iQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E3A2185899800D8D5BE /* iQuizUITests.swift */; };
 		236DC82E218FC5CE0012FA51 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DC82D218FC5CE0012FA51 /* Questions.swift */; };
+		236DC830218FDA5C0012FA51 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		23438E3A2185899800D8D5BE /* iQuizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iQuizUITests.swift; sourceTree = "<group>"; };
 		23438E3C2185899900D8D5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236DC82D218FC5CE0012FA51 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				231729CC218FA0390027D5DD /* QuestionViewController.swift */,
 				23438E1A2185899800D8D5BE /* AppDelegate.swift */,
 				23438E1C2185899800D8D5BE /* HomeViewController.swift */,
+				236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */,
 				23438E1E2185899800D8D5BE /* Main.storyboard */,
 				23438E212185899800D8D5BE /* Assets.xcassets */,
 				23438E232185899800D8D5BE /* LaunchScreen.storyboard */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				236DC830218FDA5C0012FA51 /* AnswerViewController.swift in Sources */,
 				23438E1D2185899800D8D5BE /* HomeViewController.swift in Sources */,
 				23438E1B2185899800D8D5BE /* AppDelegate.swift in Sources */,
 				231729CD218FA0390027D5DD /* QuestionViewController.swift in Sources */,
