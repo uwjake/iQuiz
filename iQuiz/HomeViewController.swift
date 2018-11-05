@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
     let subjectDescriptions = ["Think yourself as a calculator",

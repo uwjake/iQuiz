@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		231729CD218FA0390027D5DD /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231729CC218FA0390027D5DD /* QuizViewController.swift */; };
+		231729CD218FA0390027D5DD /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231729CC218FA0390027D5DD /* QuestionViewController.swift */; };
 		2328CF812187F91700B45978 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328CF802187F91700B45978 /* AppData.swift */; };
 		23438E1B2185899800D8D5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E1A2185899800D8D5BE /* AppDelegate.swift */; };
-		23438E1D2185899800D8D5BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E1C2185899800D8D5BE /* ViewController.swift */; };
+		23438E1D2185899800D8D5BE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E1C2185899800D8D5BE /* HomeViewController.swift */; };
 		23438E202185899800D8D5BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23438E1E2185899800D8D5BE /* Main.storyboard */; };
 		23438E222185899800D8D5BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23438E212185899800D8D5BE /* Assets.xcassets */; };
 		23438E252185899800D8D5BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23438E232185899800D8D5BE /* LaunchScreen.storyboard */; };
@@ -36,11 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		231729CC218FA0390027D5DD /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizViewController.swift; path = ../QuizViewController.swift; sourceTree = "<group>"; };
+		231729CC218FA0390027D5DD /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionViewController.swift; path = ../QuestionViewController.swift; sourceTree = "<group>"; };
 		2328CF802187F91700B45978 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		23438E172185899800D8D5BE /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23438E1A2185899800D8D5BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		23438E1C2185899800D8D5BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23438E1C2185899800D8D5BE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23438E1F2185899800D8D5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23438E212185899800D8D5BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23438E242185899800D8D5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,9 +101,9 @@
 		23438E192185899800D8D5BE /* iQuiz */ = {
 			isa = PBXGroup;
 			children = (
-				231729CC218FA0390027D5DD /* QuizViewController.swift */,
+				231729CC218FA0390027D5DD /* QuestionViewController.swift */,
 				23438E1A2185899800D8D5BE /* AppDelegate.swift */,
-				23438E1C2185899800D8D5BE /* ViewController.swift */,
+				23438E1C2185899800D8D5BE /* HomeViewController.swift */,
 				23438E1E2185899800D8D5BE /* Main.storyboard */,
 				23438E212185899800D8D5BE /* Assets.xcassets */,
 				23438E232185899800D8D5BE /* LaunchScreen.storyboard */,
@@ -262,9 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23438E1D2185899800D8D5BE /* ViewController.swift in Sources */,
+				23438E1D2185899800D8D5BE /* HomeViewController.swift in Sources */,
 				23438E1B2185899800D8D5BE /* AppDelegate.swift in Sources */,
-				231729CD218FA0390027D5DD /* QuizViewController.swift in Sources */,
+				231729CD218FA0390027D5DD /* QuestionViewController.swift in Sources */,
 				2328CF812187F91700B45978 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

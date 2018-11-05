@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
     let subjectDescriptions = ["Think yourself as a calculator",
                                "About people that live only in your illusion",
