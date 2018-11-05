@@ -105,6 +105,16 @@
                     <view key="view" contentMode="scaleToFill" id="9rS-K6-MCs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bT-HM-fdp">
+                                <rect key="frame" x="171" y="503" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="AcM-hi-n5W" kind="show" id="IH3-1T-pYe"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="7II-KM-PVm"/>
                     </view>
@@ -114,4 +124,8 @@
             <point key="canvasLocation" x="-286" y="849"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="UmN-Uy-2Ph"/>
+        <segue reference="IH3-1T-pYe"/>
+    </inferredMetricsTieBreakers>
 </document>
