@@ -27,7 +27,7 @@
                                 <items>
                                     <navigationItem title="iQuiz" id="RkR-93-p1l">
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="p0j-w1-mI1">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ptc-jI-P2r">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ptc-jI-P2r">
                                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Settings"/>
@@ -378,6 +378,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="KWh-sd-ufz"/>
-        <segue reference="Edp-LQ-oNf"/>
+        <segue reference="Wft-60-NNo"/>
     </inferredMetricsTieBreakers>
 </document>
