@@ -9,33 +9,34 @@
 import UIKit
 
 
-
 class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    let subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
-    let subjectDescriptions = ["Think yourself as a calculator",
-                               "About people that live only in your illusion",
-                               "Things that people can expain"]
-    let subjectIcons = ["math_icon", "marvel_icon", "science_icon"]
+    let subjectNames = HomeViewController.questions.data[HomeViewController.currentSubject]?[HomeViewController.currentQuestion].options
+//    let subjectNames = ["1","3"]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return subjectNames.count
+        return subjectNames?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = UITableViewCell(style: .subtitle, reuseIdentifier: "Row")
-        row.imageView?.image = UIImage(named: subjectIcons[indexPath.row])
-        row.textLabel?.text = subjectNames[indexPath.row]
-        row.detailTextLabel?.text = subjectDescriptions[indexPath.row]
+        row.textLabel?.text = subjectNames?[indexPath.row]
         row.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         return row
     }
     
     
+    @IBAction func onSubmit(_ sender: Any) {
+        HomeViewController.currentQuestion += 1
+        print(HomeViewController.currentQuestion)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionsTableView.tableFooterView = UIView(frame: CGRect.zero)
-        questionsTableView.dataSource = self
-        questionsTableView.delegate = self
+        questionsTableView?.dataSource = self
+        questionsTableView?.delegate = self
+        questionsTableView?.tableFooterView = UIView(frame: CGRect.zero)
+        
+//        print(HomeViewController.questions.data)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right

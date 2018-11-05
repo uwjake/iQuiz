@@ -11,6 +11,9 @@ import UIKit
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    public static var questions = Questions()
+    public static var currentQuestion = 0
+    public static var currentSubject = "Science"
     
     let subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
     let subjectDescriptions = ["Think yourself as a calculator",
@@ -34,9 +37,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         row.textLabel?.text = subjectNames[indexPath.row]
         row.detailTextLabel?.text = subjectDescriptions[indexPath.row]
         row.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        
+        
         return row
     }
     
+    
+    func constructQuestions(){
+        HomeViewController.questions.addQ("Science", "Who is your instructor?", ["Ted","Michael","JJ","Eh... No clue"], 0)
+        HomeViewController.questions.addQ("Science", "Which course are your taking?", ["INFO446", "INFO447","INFO448","INFO449"], 3)
+    }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        self.performSegue(withIdentifier: "goToQuiz", sender: self)
@@ -49,7 +59,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         uiAlert.addAction(defaultAction)
 //        self.present(uiAlert, animated: true, completion: nil)
         self.performSegue(withIdentifier: "goToQuiz", sender: self)
-//        navigationController?.pushViewController(QuizViewController(), animated: true)
+        
+//        navigationController?.pushViewController(QuestionViewController(), animated: true)
 
 
     }
@@ -69,11 +80,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        constructQuestions()
+        print(HomeViewController.questions.data["Science"]?[0].options)
 //        self.navigationController?.navigationBar.isHidden = true;
         
         tableView?.dataSource = self
