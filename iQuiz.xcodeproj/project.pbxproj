@@ -18,6 +18,7 @@
 		23438E3B2185899800D8D5BE /* iQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E3A2185899800D8D5BE /* iQuizUITests.swift */; };
 		236DC82E218FC5CE0012FA51 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DC82D218FC5CE0012FA51 /* Questions.swift */; };
 		236DC830218FDA5C0012FA51 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */; };
+		2382EE87219010DF00946DB8 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382EE86219010DF00946DB8 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		23438E3C2185899900D8D5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236DC82D218FC5CE0012FA51 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
+		2382EE86219010DF00946DB8 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				23438E262185899800D8D5BE /* Info.plist */,
 				2328CF802187F91700B45978 /* AppData.swift */,
 				236DC82D218FC5CE0012FA51 /* Questions.swift */,
+				2382EE86219010DF00946DB8 /* ResultViewController.swift */,
 			);
 			path = iQuiz;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			files = (
 				236DC830218FDA5C0012FA51 /* AnswerViewController.swift in Sources */,
 				23438E1D2185899800D8D5BE /* HomeViewController.swift in Sources */,
+				2382EE87219010DF00946DB8 /* ResultViewController.swift in Sources */,
 				23438E1B2185899800D8D5BE /* AppDelegate.swift in Sources */,
 				231729CD218FA0390027D5DD /* QuestionViewController.swift in Sources */,
 				236DC82E218FC5CE0012FA51 /* Questions.swift in Sources */,

@@ -11,9 +11,12 @@ import UIKit
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    public static var questions = Questions()
+    
+    public static var questions = Questions.Questions()
     public static var currentQuestion = 0
     public static var currentSubject = "Science"
+    public static var totalQuestion = 0
+    public static var numCorrect = 0
     
     let subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
     let subjectDescriptions = ["Think yourself as a calculator",
@@ -43,21 +46,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    func constructQuestions(){
-        HomeViewController.questions.addQ("Science", "Who is your instructor?", ["Ted","Michael","JJ","Eh... No clue"], 0)
-        HomeViewController.questions.addQ("Science", "Which course are your taking?", ["INFO446", "INFO447","INFO448","INFO449"], 3)
-    }
+    
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        self.performSegue(withIdentifier: "goToQuiz", sender: self)
 //    }
 
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let row = indexPath.row
-        let uiAlert = UIAlertController(title: "You selected \(subjectNames[row])", message:subjectDescriptions[row] , preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        uiAlert.addAction(defaultAction)
-//        self.present(uiAlert, animated: true, completion: nil)
+        HomeViewController.currentSubject = subjectNames[indexPath.row]
         self.performSegue(withIdentifier: "goToQuiz", sender: self)
         
 //        navigationController?.pushViewController(QuestionViewController(), animated: true)
@@ -72,11 +68,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @IBAction func settingsPressed(_ sender: UIBarButtonItem) {
+    @IBAction func settingsPressed(_ sender: Any) {
         let uiAlert = UIAlertController(title: "Settings Button Pressed", message: "Oops, still under development", preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         uiAlert.addAction(defaultAction)
         self.present(uiAlert, animated: true, completion: nil)
+    
     }
     
     
@@ -84,17 +81,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        constructQuestions()
-        print(HomeViewController.questions.data["Science"]?[0].options)
-//        self.navigationController?.navigationBar.isHidden = false;
-//        self.navigationController?.interactivePopGestureRecognizer!.isEnabled = true
+        HomeViewController.currentQuestion = 0
+        HomeViewController.numCorrect = 0
         
         tableView?.dataSource = self
         tableView?.delegate = self
-        
-      
-       
-        
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 

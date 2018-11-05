@@ -10,23 +10,39 @@ import UIKit
 
 
 class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    let subjectNames = HomeViewController.questions.data[HomeViewController.currentSubject]?[HomeViewController.currentQuestion].options
-//    let subjectNames = ["1","3"]
+    
+    var currentQuiz: Question = (HomeViewController.questions.data[HomeViewController.currentSubject]?[HomeViewController.currentQuestion])!
+    var answerChosen:Int = -1
+    
+    @IBOutlet weak var questionLabel: UILabel!
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return subjectNames?.count ?? 0
+        return currentQuiz.options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = UITableViewCell(style: .subtitle, reuseIdentifier: "Row")
-        row.textLabel?.text = subjectNames?[indexPath.row]
+        row.textLabel?.text = currentQuiz.options[indexPath.row]
         row.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         return row
     }
     
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        answerChosen = indexPath.row
+    }
     
     @IBAction func onSubmit(_ sender: Any) {
-        HomeViewController.currentQuestion += 1
-        print(HomeViewController.currentQuestion)
+        if answerChosen == -1 {
+            let uiAlert = UIAlertController(title: "Please select an answer to proceed", message: "" , preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            uiAlert.addAction(defaultAction)
+            self.present(uiAlert, animated: true, completion: nil)
+        } else {
+            AnswerViewController.answerChosen = answerChosen
+            print(HomeViewController.currentQuestion)
+        }
+       
     }
     
 
@@ -36,6 +52,11 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
         questionsTableView?.delegate = self
         questionsTableView?.tableFooterView = UIView(frame: CGRect.zero)
         
+        questionLabel.text = currentQuiz.question
+        
+        HomeViewController.totalQuestion = (HomeViewController.questions.data[HomeViewController.currentSubject]?.count)!
+        
+        naviTitle.title = "\(HomeViewController.currentSubject): \(HomeViewController.currentQuestion + 1) / \(HomeViewController.totalQuestion)"
 //        print(HomeViewController.questions.data)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
@@ -46,7 +67,6 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(swipeLeft)
 
-        print("quiz loaded")
         // Do any additional setup after loading the view.
     }
 
@@ -54,8 +74,8 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var questionsTableView: UITableView!
     
     
-    //
-
+    @IBOutlet weak var naviTitle: UINavigationItem!
+    
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
