@@ -37,6 +37,9 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
        
     }
     
+    @IBAction func onHomePressed(_ sender: Any) {
+        backToHome()
+    }
     func submitAnswer(){
         if answerChosen == -1 {
             let uiAlert = UIAlertController(title: "Please select an answer to proceed", message: "" , preferredStyle: .alert)

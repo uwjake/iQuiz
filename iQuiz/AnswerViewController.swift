@@ -90,6 +90,9 @@ class AnswerViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func backToHome(){
         performSegue(withIdentifier: "AnswerToHome", sender: self)
     }
+    @IBAction func onHomePressed(_ sender: Any) {
+        backToHome()
+    }
     
     func nextButtonEvent(){
         HomeViewController.currentQuestion += 1
