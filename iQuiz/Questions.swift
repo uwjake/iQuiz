@@ -17,6 +17,31 @@ class Questions: NSObject {
         var currentQuestion = 0
         
         init() {
+            
+//            let file = "file.txt" //this is the file. we will write to and read from it
+//            
+//            let text = "some text" //just a text
+//            
+//            if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+//                
+//                let fileURL = dir.appendingPathComponent(file)
+//                
+//                //writing
+//                do {
+//                    try text.write(to: fileURL, atomically: false, encoding: .utf8)
+//                }
+//                catch {/* error handling here */}
+//                
+//                //reading
+//                do {
+//                    let text2 = try String(contentsOf: fileURL, encoding: .utf8)
+//                    print("reading  " + text2)
+//                }
+//                catch {/* error handling here */}
+//            }
+            
+            
+            
             self.addQ("Science", "Who is your instructor?", ["Ted","Michael","JJ","Eh... No clue"], 0)
             self.addQ("Science", "Which course are your taking?", ["INFO446", "INFO447","INFO448","INFO449"], 3)
             self.addQ("Marvel Super Heroes", "Who can climb the wall?", ["Ironman","Superman","Spiderman","Me"], 2)

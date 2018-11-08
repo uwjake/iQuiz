@@ -78,13 +78,53 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-
+    // refresh control
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(HomeViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.gray
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Data ...")
+        sleep(1)
+        
+        return refreshControl
+    }()
+    
+    
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 1.0, delay: 2.0, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+            
+            self.refreshControl.endRefreshing()
+        })
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+       print("refreshing")
+        showToast(message: "Updaitng")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         HomeViewController.currentQuestion = 0
         HomeViewController.numCorrect = 0
-        
+        HomeViewController.questions = Questions.Questions()
+        print("didLoad")
+        tableView.addSubview(self.refreshControl)
         tableView?.dataSource = self
         tableView?.delegate = self
 
