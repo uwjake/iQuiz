@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		231729CD218FA0390027D5DD /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231729CC218FA0390027D5DD /* QuestionViewController.swift */; };
+		231B12922193E54700742B3E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 231B12912193E54700742B3E /* Settings.bundle */; };
 		2328CF812187F91700B45978 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328CF802187F91700B45978 /* AppData.swift */; };
 		23438E1B2185899800D8D5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E1A2185899800D8D5BE /* AppDelegate.swift */; };
 		23438E1D2185899800D8D5BE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23438E1C2185899800D8D5BE /* HomeViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		231729CC218FA0390027D5DD /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionViewController.swift; path = ../QuestionViewController.swift; sourceTree = "<group>"; };
+		231B12912193E54700742B3E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2328CF802187F91700B45978 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		23438E172185899800D8D5BE /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23438E1A2185899800D8D5BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				231729CC218FA0390027D5DD /* QuestionViewController.swift */,
 				23438E1A2185899800D8D5BE /* AppDelegate.swift */,
 				23438E1C2185899800D8D5BE /* HomeViewController.swift */,
+				231B12912193E54700742B3E /* Settings.bundle */,
 				236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */,
 				23438E1E2185899800D8D5BE /* Main.storyboard */,
 				23438E212185899800D8D5BE /* Assets.xcassets */,
@@ -244,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231B12922193E54700742B3E /* Settings.bundle in Resources */,
 				23438E252185899800D8D5BE /* LaunchScreen.storyboard in Resources */,
 				23438E222185899800D8D5BE /* Assets.xcassets in Resources */,
 				23438E202185899800D8D5BE /* Main.storyboard in Resources */,

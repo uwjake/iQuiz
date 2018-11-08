@@ -19,19 +19,19 @@ class Questions: NSObject {
         init() {
             
 //            let file = "file.txt" //this is the file. we will write to and read from it
-//            
+//
 //            let text = "some text" //just a text
-//            
+//
 //            if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-//                
+//
 //                let fileURL = dir.appendingPathComponent(file)
-//                
+//
 //                //writing
 //                do {
 //                    try text.write(to: fileURL, atomically: false, encoding: .utf8)
 //                }
 //                catch {/* error handling here */}
-//                
+//
 //                //reading
 //                do {
 //                    let text2 = try String(contentsOf: fileURL, encoding: .utf8)
@@ -56,7 +56,19 @@ class Questions: NSObject {
             } else {
                 data[subject] = [( Question(question, options, answer) )]
             }
-            
+        }
+        
+        mutating func changeData(_ quizDict:[Dictionary<String, AnyObject>]){
+            for subject in quizDict {
+                var subjectName = subject["title"]
+                var subjectDesc = subject["desc"]
+                for q in subject["questions"] as! [Dictionary<String, AnyObject>] {
+//                    print(q["])
+                    self.addQ(subjectName as! String, q["text"] as! String, q["answers"] as! [String], 1)
+                }
+                
+            }
+            print(self.data)
         }
     }
     

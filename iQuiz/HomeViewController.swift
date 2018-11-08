@@ -45,38 +45,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return row
     }
     
-    
-    
-    
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "goToQuiz", sender: self)
-//    }
+
 
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         HomeViewController.currentSubject = subjectNames[indexPath.row]
         self.performSegue(withIdentifier: "goToQuiz", sender: self)
-        
-//        navigationController?.pushViewController(QuestionViewController(), animated: true)
-
-
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SegueIdentifier" {
-            print("I'm segue Identifier!")
-            
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "SegueIdentifier" {
+//            print("I'm segue Identifier!")
+//        }
+//    }
     
     @IBAction func settingsPressed(_ sender: Any) {
         let uiAlert = UIAlertController(title: "Settings Button Pressed", message: "Oops, still under development", preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         uiAlert.addAction(defaultAction)
         self.present(uiAlert, animated: true, completion: nil)
-    
     }
-    
     
     // refresh control
     lazy var refreshControl: UIRefreshControl = {
@@ -93,7 +80,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func showToast(message : String) {
-        
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
@@ -104,7 +90,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toastLabel.layer.cornerRadius = 10;
         toastLabel.clipsToBounds  =  true
         self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 1.0, delay: 2.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
@@ -114,10 +100,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-       print("refreshing")
+//       print("refreshing")
         showToast(message: "Updaitng")
     }
     
+    func loadData(url: String = "https://tednewardsandbox.site44.com/questions.json") {
+        let request = URLSession.shared.dataTask(with: URL(string: url)!) {
+            (data, response, error) in
+            
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                 dataResponse, options: []) as? [Dictionary<String,AnyObject>]
+                HomeViewController.questions.changeData(jsonResponse!) //Response result
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+        }.resume()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         HomeViewController.currentQuestion = 0
@@ -127,7 +133,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.addSubview(self.refreshControl)
         tableView?.dataSource = self
         tableView?.delegate = self
-
+        loadData()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
