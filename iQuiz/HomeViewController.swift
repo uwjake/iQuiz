@@ -105,6 +105,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
 //       print("refreshing")
         showToast(message: "Updaitng", remove_refresher: true)
+        loadData()
     }
     
     func loadData(url: String = "https://tednewardsandbox.site44.com/questions.json") {
