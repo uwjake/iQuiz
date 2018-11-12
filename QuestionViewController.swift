@@ -46,6 +46,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             uiAlert.addAction(defaultAction)
             self.present(uiAlert, animated: true, completion: nil)
+            
         } else {
             AnswerViewController.answerChosen = answerChosen
             performSegue(withIdentifier: "QuestionToAnswer", sender: self)

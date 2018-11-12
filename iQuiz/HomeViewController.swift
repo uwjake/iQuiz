@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }()
     
     
-    func showToast(message : String) {
+    func showToast(message : String, remove_refresher: Bool = false) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
@@ -95,57 +95,99 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             toastLabel.alpha = 0.0
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
+            if remove_refresher {
+                self.refreshControl.endRefreshing()
+            }
             
-            self.refreshControl.endRefreshing()
         })
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
 //       print("refreshing")
-        showToast(message: "Updaitng")
+        showToast(message: "Updaitng", remove_refresher: true)
     }
     
     func loadData(url: String = "https://tednewardsandbox.site44.com/questions.json") {
+
         let request = URLSession.shared.dataTask(with: URL(string: url)!) {
             (data, response, error) in
             
             guard let dataResponse = data,
                 error == nil else {
                     print(error?.localizedDescription ?? "Response Error")
+                    self.loadLocalData()
                     return }
-            do{
-                //here dataResponse received from a network request
-                let jsonResponse = try JSONSerialization.jsonObject(with:
-                 dataResponse, options: []) as? [Dictionary<String,AnyObject>]
+            if error == nil {
                 
-                self.subjectNames = []
-                self.subjectDescriptions = []
-//                self.subjectIcons = []
-                
-                
-                for subject in jsonResponse! {
-                    let subjectName = subject["title"] as! String
-                    self.subjectNames.append(subjectName)
-                    self.subjectDescriptions.append(subject["desc"] as! String)
-                    for q in subject["questions"] as! [Dictionary<String, AnyObject>] {
-                        HomeViewController.questions.addQ(subjectName as! String, q["text"] as! String, q["answers"] as! [String], q["answer"] as! String)
-                    }
+                do{
+                    //here dataResponse received from a network request
                     
+                    let jsonResponse = try JSONSerialization.jsonObject(with:
+                     dataResponse, options: []) as? [Dictionary<String,AnyObject>]
+                    
+                    // store locally
+                    UserDefaults.standard.set(jsonResponse, forKey: "quiz")
+                    
+                    self.subjectNames = []
+                    self.subjectDescriptions = []
+    //                self.subjectIcons = []
+                    
+                    self.initData(jsonResponse: jsonResponse!)
+                    
+                } catch let parsingError {
+                    print("Error", parsingError)
                 }
                 
-                 //Response result
-            } catch let parsingError {
-                print("Error", parsingError)
             }
-            
-        }.resume()
+        }
+        
+            request.resume()
+      
+       
         
     }
+    
+    func initData(jsonResponse: [Dictionary<String,AnyObject>]) {
+        HomeViewController.currentQuestion = 0
+        HomeViewController.numCorrect = 0
+        HomeViewController.questions = Questions.Questions()
+        subjectNames = []
+        subjectDescriptions = []
+        for subject in jsonResponse {
+            let subjectName = subject["title"] as! String
+            self.subjectNames.append(subjectName)
+            self.subjectDescriptions.append(subject["desc"] as! String)
+            for q in subject["questions"] as! [Dictionary<String, AnyObject>] {
+                HomeViewController.questions.addQ(subjectName, q["text"] as! String, q["answers"] as! [String], q["answer"] as! String)
+            }
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+    func loadLocalData() {
+        var message = "Network error, using local data"
+        let localJson = UserDefaults.standard.value(forKey: "quiz")
+        if localJson != nil {
+            initData(jsonResponse: localJson as! [Dictionary<String, AnyObject>])
+        } else {
+            message = "Network error, please connect to internet"
+        }
+        
+        let uiAlert = UIAlertController(title: message, message:"", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        uiAlert.addAction(defaultAction)
+        self.present(uiAlert, animated: true, completion: nil)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         HomeViewController.currentQuestion = 0
         HomeViewController.numCorrect = 0
         HomeViewController.questions = Questions.Questions()
+        HomeViewController.questions.addDefaultQ()
         print("didLoad")
         tableView.addSubview(self.refreshControl)
         tableView?.dataSource = self
