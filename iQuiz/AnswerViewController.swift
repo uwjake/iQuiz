@@ -78,10 +78,10 @@ class AnswerViewController: UIViewController,UITableViewDelegate, UITableViewDat
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
                 backToHome()
-                print("Swiped right")
+//                print("Swiped right")
             case UISwipeGestureRecognizer.Direction.left:
                 nextButtonEvent()
-                print("Swiped left")
+//                print("Swiped left")
             default:
                 break
             }

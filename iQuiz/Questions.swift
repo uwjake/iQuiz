@@ -39,37 +39,18 @@ class Questions: NSObject {
 //                }
 //                catch {/* error handling here */}
 //            }
-            
-            
-            
-            self.addQ("Science", "Who is your instructor?", ["Ted","Michael","JJ","Eh... No clue"], 0)
-            self.addQ("Science", "Which course are your taking?", ["INFO446", "INFO447","INFO448","INFO449"], 3)
-            self.addQ("Marvel Super Heroes", "Who can climb the wall?", ["Ironman","Superman","Spiderman","Me"], 2)
-            self.addQ("Marvel Super Heroes", "Who is not a super hero?", ["Wonderwoman", "Harry Potter","Trump","Thor"], 2)
-            self.addQ("Mathematics", "1 + 1 = ", ["1","2","3","4"], 1)
-            self.addQ("Mathematics", "1 - 1 = ", ["-1", "-2","-3","0"], 3)
+      
         }
-        mutating func addQ (_ subject: String, _ question:String, _ options: [String], _ answer:Int) {
+        mutating func addQ (_ subject: String, _ question:String, _ options: [String], _ answer: String) {
+            let answerInt = Int(answer)! - 1
             if data[subject] != nil {
-                data[subject]!.append( Question(question, options, answer) )
+                data[subject]!.append( Question(question, options, answerInt) )
                 scores[subject] = 0
             } else {
-                data[subject] = [( Question(question, options, answer) )]
+                data[subject] = [ Question(question, options, answerInt) ]
             }
         }
         
-        mutating func changeData(_ quizDict:[Dictionary<String, AnyObject>]){
-            for subject in quizDict {
-                var subjectName = subject["title"]
-                var subjectDesc = subject["desc"]
-                for q in subject["questions"] as! [Dictionary<String, AnyObject>] {
-//                    print(q["])
-                    self.addQ(subjectName as! String, q["text"] as! String, q["answers"] as! [String], 1)
-                }
-                
-            }
-            print(self.data)
-        }
     }
     
     
@@ -80,16 +61,10 @@ struct Question {
     var question: String
     var options: [String]
     var answer: Int
-    var answerChosen: Int
     
     init(_ question: String, _ options: [String], _ answer: Int){
         self.question = question
         self.options = options
         self.answer = answer
-        self.answerChosen = -1
-    }
-    
-    mutating func chooseAnswer(_ ans: Int) {
-        self.answerChosen = ans
     }
 }

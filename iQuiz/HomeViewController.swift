@@ -18,11 +18,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     public static var totalQuestion = 0
     public static var numCorrect = 0
     
-    let subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
-    let subjectDescriptions = ["Think yourself as a calculator",
+    var subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
+    var subjectDescriptions = ["Think yourself as a calculator",
                                "About people that live only in your illusion",
                                "Things that people can expain"]
-    let subjectIcons = ["math_icon", "marvel_icon", "science_icon"]
+    var subjectIcons = ["math_icon", "marvel_icon", "science_icon"]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subjectNames.count
     }
@@ -38,6 +38,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let row = UITableViewCell(style: .subtitle, reuseIdentifier: "Row")
         row.imageView?.image = UIImage(named: subjectIcons[indexPath.row])
         row.textLabel?.text = subjectNames[indexPath.row]
+        
         row.detailTextLabel?.text = subjectDescriptions[indexPath.row]
         row.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
@@ -116,7 +117,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 //here dataResponse received from a network request
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                  dataResponse, options: []) as? [Dictionary<String,AnyObject>]
-                HomeViewController.questions.changeData(jsonResponse!) //Response result
+                
+                self.subjectNames = []
+                self.subjectDescriptions = []
+//                self.subjectIcons = []
+                
+                
+                for subject in jsonResponse! {
+                    let subjectName = subject["title"] as! String
+                    self.subjectNames.append(subjectName)
+                    self.subjectDescriptions.append(subject["desc"] as! String)
+                    for q in subject["questions"] as! [Dictionary<String, AnyObject>] {
+                        HomeViewController.questions.addQ(subjectName as! String, q["text"] as! String, q["answers"] as! [String], q["answer"] as! String)
+                    }
+                    
+                }
+                
+                 //Response result
             } catch let parsingError {
                 print("Error", parsingError)
             }
