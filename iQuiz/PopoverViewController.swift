@@ -13,10 +13,28 @@ class PopoverViewController: UIViewController, UIPopoverPresentationControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         print("pop over loaded")
+        subjectLabel.text = HomeViewController.currentSubject
+        scoreLabel.text = "\(HomeViewController.numCorrect) / \(HomeViewController.totalQuestion) correct"
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBOutlet weak var subjectLabel: UILabel!
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        let tmpController :UIViewController! = self
+        
+        self.dismiss(animated: false, completion: {()->Void in
+            tmpController.dismiss(animated: false, completion: nil);
+        });
+    }
+    
+    
 
+    
     /*
     // MARK: - Navigation
 

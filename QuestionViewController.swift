@@ -9,17 +9,42 @@
 import UIKit
 
 
-class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
     var currentQuiz: Question = (HomeViewController.questions.data[HomeViewController.currentSubject]?[HomeViewController.currentQuestion])!
     var answerChosen:Int = -1
     
     @IBOutlet weak var questionLabel: UILabel!
     
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+    {
+        return .none
+    }
+    
+    @IBAction func scorePressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let optionsVC = storyboard.instantiateViewController(
+            withIdentifier: "PopoverViewController")
+        
+        // Use the popover presentation style for your view controller.
+        optionsVC.modalPresentationStyle = .popover
+        
+        // Specify the anchor point for the popover.
+        let popOver = optionsVC.popoverPresentationController
+        popOver?.delegate = self
+        popOver?.sourceView = view
+        popOver?.sourceRect = CGRect(x: self.view.bounds.maxX, y: 100, width: 0, height: 0)
+        
+        // Present the view controller (in a popover).
+        self.present(optionsVC, animated: true) {
+            // The popover is visible.
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentQuiz.options.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = UITableViewCell(style: .subtitle, reuseIdentifier: "Row")
@@ -34,7 +59,6 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func onSubmit(_ sender: Any) {
        submitAnswer()
-       
     }
     
     @IBAction func onHomePressed(_ sender: Any) {

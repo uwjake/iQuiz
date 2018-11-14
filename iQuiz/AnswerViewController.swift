@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnswerViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class AnswerViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     
      var currentQuiz: Question = (HomeViewController.questions.data[HomeViewController.currentSubject]?[HomeViewController.currentQuestion])!
@@ -20,6 +20,31 @@ class AnswerViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var answerIndicatorLabel: UILabel!
     @IBOutlet weak var naviTitle: UINavigationItem!
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+    {
+        return .none
+    }
+    
+    @IBAction func scorePressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let optionsVC = storyboard.instantiateViewController(
+            withIdentifier: "PopoverViewController")
+        
+        // Use the popover presentation style for your view controller.
+        optionsVC.modalPresentationStyle = .popover
+        
+        // Specify the anchor point for the popover.
+        let popOver = optionsVC.popoverPresentationController
+        popOver?.delegate = self
+        popOver?.sourceView = view
+        popOver?.sourceRect = CGRect(x: self.view.bounds.maxX, y: 100, width: 0, height: 0)
+        
+        // Present the view controller (in a popover).
+        self.present(optionsVC, animated: true) {
+            // The popover is visible.
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentQuiz.options.count

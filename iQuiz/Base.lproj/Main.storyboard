@@ -13,7 +13,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,14 +68,60 @@
                     <view key="view" contentMode="scaleToFill" id="dt3-Wd-MYs">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6u-by-Iiu">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="SWc-BR-UXI">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="m5L-Ct-36T">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="E9H-NY-SfN">
+                                                <rect key="frame" x="154" y="7" width="30" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="OK"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="rbL-jH-0le" eventType="touchUpInside" id="JKu-0h-1Oh"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3 / 3 correct" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNx-8Y-irX">
+                                <rect key="frame" x="16" y="134" width="168" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Science" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78x-kx-uUm">
+                                <rect key="frame" x="16" y="82" width="168" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dNx-8Y-irX" firstAttribute="leading" secondItem="bcR-XK-m9q" secondAttribute="leading" constant="16" id="6Pg-Iq-AjO"/>
+                            <constraint firstItem="dNx-8Y-irX" firstAttribute="top" secondItem="78x-kx-uUm" secondAttribute="bottom" constant="31" id="6Ps-w3-yk7"/>
+                            <constraint firstItem="bcR-XK-m9q" firstAttribute="bottom" secondItem="dNx-8Y-irX" secondAttribute="bottom" constant="45" id="J2a-Qa-EVL"/>
+                            <constraint firstItem="78x-kx-uUm" firstAttribute="top" secondItem="bcR-XK-m9q" secondAttribute="top" constant="82" id="Tph-qc-KLK"/>
+                            <constraint firstItem="bcR-XK-m9q" firstAttribute="trailing" secondItem="dNx-8Y-irX" secondAttribute="trailing" constant="16" id="Yds-ZV-yRC"/>
+                            <constraint firstItem="bcR-XK-m9q" firstAttribute="trailing" secondItem="78x-kx-uUm" secondAttribute="trailing" constant="16" id="bJS-VZ-XSh"/>
+                            <constraint firstItem="78x-kx-uUm" firstAttribute="leading" secondItem="bcR-XK-m9q" secondAttribute="leading" constant="16" id="gsR-Xi-yZc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bcR-XK-m9q"/>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
                     <size key="freeformSize" width="200" height="200"/>
+                    <connections>
+                        <outlet property="scoreLabel" destination="dNx-8Y-irX" id="bny-RY-fNT"/>
+                        <outlet property="subjectLabel" destination="78x-kx-uUm" id="Fs1-In-neA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EO4-J0-4tA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-966" y="116"/>
+            <point key="canvasLocation" x="-966.39999999999998" y="115.14242878560721"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="Uji-ni-JIE">
@@ -93,9 +139,19 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZE4-Oz-AvI">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="&lt; Home"/>
+                                                <state key="normal" title="Home"/>
                                                 <connections>
                                                     <action selector="onHomePressed:" destination="AcM-hi-n5W" eventType="touchUpInside" id="i0l-gT-K7K"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="4bZ-nz-hp6">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fav-6b-uXs">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Score"/>
+                                                <connections>
+                                                    <action selector="scorePressed:" destination="AcM-hi-n5W" eventType="touchUpInside" id="kZw-AZ-ELw"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -229,9 +285,19 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vir-eE-wMw">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="&lt; Home"/>
+                                                <state key="normal" title="Home"/>
                                                 <connections>
                                                     <action selector="onHomePressed:" destination="K2G-2S-lE2" eventType="touchUpInside" id="xIe-zV-tDN"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="N1Z-Ue-D3B">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TFb-CC-phr">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Score"/>
+                                                <connections>
+                                                    <action selector="scorePressed:" destination="K2G-2S-lE2" eventType="touchUpInside" id="CDl-7R-xRE"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -390,7 +456,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vaW-ln-uaW"/>
-        <segue reference="KoY-Br-Rvz"/>
+        <segue reference="KWh-sd-ufz"/>
+        <segue reference="Edp-LQ-oNf"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate{
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
     public static var questions = Questions.Questions()
     public static var currentQuestion = 0
@@ -135,6 +135,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func loadData(url: String = "https://tednewardsandbox.site44.com/questions.json") {
 
+        print("Loading data")
         let request = URLSession.shared.dataTask(with: URL(string: url)!) {
             (data, response, error) in
             
@@ -214,7 +215,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         HomeViewController.numCorrect = 0
         HomeViewController.questions = Questions.Questions()
         HomeViewController.questions.addDefaultQ()
-        print("didLoad")
+//        print("didLoad")
         tableView.addSubview(self.refreshControl)
         tableView?.dataSource = self
         tableView?.delegate = self
