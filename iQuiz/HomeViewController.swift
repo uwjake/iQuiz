@@ -10,13 +10,14 @@ import UIKit
 
 
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate{
     
     public static var questions = Questions.Questions()
     public static var currentQuestion = 0
     public static var currentSubject = "Science"
     public static var totalQuestion = 0
     public static var numCorrect = 0
+    public static var urlString = ""
     
     var subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
     var subjectDescriptions = ["Think yourself as a calculator",
@@ -58,12 +59,36 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //            print("I'm segue Identifier!")
 //        }
 //    }
-    
-    @IBAction func settingsPressed(_ sender: Any) {
-        let uiAlert = UIAlertController(title: "Settings Button Pressed", message: "Oops, still under development", preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        uiAlert.addAction(defaultAction)
-        self.present(uiAlert, animated: true, completion: nil)
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+    {
+        return .none
+    }
+
+    @IBAction func settingsPressed(_ sender: UIBarButtonItem) {
+//        let uiAlert = UIAlertController(title: "Settings Button Pressed", message: "Oops, still under development", preferredStyle: .alert)
+//        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        uiAlert.addAction(defaultAction)
+//        self.present(uiAlert, animated: true, completion: nil)
+        // Load and configure your view controller.
+       
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let optionsVC = storyboard.instantiateViewController(
+            withIdentifier: "PopoverViewController")
+        
+        // Use the popover presentation style for your view controller.
+        optionsVC.modalPresentationStyle = .popover
+        
+        // Specify the anchor point for the popover.
+        let popOver = optionsVC.popoverPresentationController
+        popOver?.delegate = self
+        popOver?.sourceView = view
+        popOver?.sourceRect = CGRect(x: self.view.bounds.maxX, y: 100, width: 0, height: 0)
+        
+        // Present the view controller (in a popover).
+        self.present(optionsVC, animated: true) {
+            // The popover is visible.
+        }
+        
     }
     
     // refresh control
@@ -74,7 +99,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                  for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.gray
         refreshControl.attributedTitle = NSAttributedString(string: "Fetching Data ...")
-        sleep(1)
+//        sleep(1)
         
         return refreshControl
     }()

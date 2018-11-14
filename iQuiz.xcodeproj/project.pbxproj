@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230726C621992C8F009D2C00 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230726C521992C8F009D2C00 /* PopoverViewController.swift */; };
 		231729CD218FA0390027D5DD /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231729CC218FA0390027D5DD /* QuestionViewController.swift */; };
 		231B12922193E54700742B3E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 231B12912193E54700742B3E /* Settings.bundle */; };
 		2328CF812187F91700B45978 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328CF802187F91700B45978 /* AppData.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		230726C521992C8F009D2C00 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		231729CC218FA0390027D5DD /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionViewController.swift; path = ../QuestionViewController.swift; sourceTree = "<group>"; };
 		231B12912193E54700742B3E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2328CF802187F91700B45978 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				231729CC218FA0390027D5DD /* QuestionViewController.swift */,
 				23438E1A2185899800D8D5BE /* AppDelegate.swift */,
 				23438E1C2185899800D8D5BE /* HomeViewController.swift */,
+				230726C521992C8F009D2C00 /* PopoverViewController.swift */,
 				231B12912193E54700742B3E /* Settings.bundle */,
 				236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */,
 				23438E1E2185899800D8D5BE /* Main.storyboard */,
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230726C621992C8F009D2C00 /* PopoverViewController.swift in Sources */,
 				236DC830218FDA5C0012FA51 /* AnswerViewController.swift in Sources */,
 				23438E1D2185899800D8D5BE /* HomeViewController.swift in Sources */,
 				2382EE87219010DF00946DB8 /* ResultViewController.swift in Sources */,

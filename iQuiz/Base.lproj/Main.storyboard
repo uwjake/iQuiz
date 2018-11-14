@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="-1965.5999999999999" y="846.9265367316342"/>
         </scene>
-        <!--View Controller-->
+        <!--Popover View Controller-->
         <scene sceneID="wUA-yO-OeY">
             <objects>
-                <viewController id="rbL-jH-0le" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopoverViewController" id="rbL-jH-0le" customClass="PopoverViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dt3-Wd-MYs">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EO4-J0-4tA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-878" y="59"/>
+            <point key="canvasLocation" x="-966" y="116"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="Uji-ni-JIE">
@@ -391,6 +391,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vaW-ln-uaW"/>
-        <segue reference="Wft-60-NNo"/>
+        <segue reference="KoY-Br-Rvz"/>
     </inferredMetricsTieBreakers>
 </document>
