@@ -1,13 +1,13 @@
 # ECs
 
-- [Done] Implement "Pull to Refresh" (1 pt) [Done]
-- Implement timed refresh (2 pts)
-    - Your app pulls down quiz data at an intermittent rate (ex: refreshes every 30 seconds) (1 pt)
-    - User can specify refresh interval in the iPhone's Settings stock app (1 pt)
-- Central score storage (3 pts)
+- Implement "Pull to Refresh" (1 pt) [Done]
+- Implement timed refresh (2 pts) [Done]
+    - Your app pulls down quiz data at an intermittent rate (ex: refreshes every 30 seconds) (1 pt) [Done]
+    - User can specify refresh interval in the iPhone's Settings stock app (1 pt) [Done]
+- Central score storage ( pts)
 
     - Add new toolbar button and popover for scores (1 pt) [Done]
-    - Change icon in quiz list to reflect score (1 pt)
+    
 - Create a new JSON file at a different URL (1 pt)  [Done]
     https://raw.githubusercontent.com/uwjake/iQuiz/part3/quiz.json
 
