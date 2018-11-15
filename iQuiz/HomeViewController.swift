@@ -17,7 +17,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     public static var currentSubject = "Science"
     public static var totalQuestion = 0
     public static var numCorrect = 0
-    public static var urlString = ""
+    public static var urlString = "https://tednewardsandbox.site44.com/questions.json"
     
     var subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
     var subjectDescriptions = ["Think yourself as a calculator",
@@ -130,10 +130,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
 //       print("refreshing")
         showToast(message: "Updaitng", remove_refresher: true)
-        loadData()
+        loadData(HomeViewController.urlString)
     }
     
-    func loadData(url: String = "https://tednewardsandbox.site44.com/questions.json") {
+    func loadData(_ url: String) {
+        
 
         print("Loading data")
         let request = URLSession.shared.dataTask(with: URL(string: url)!) {
@@ -219,11 +220,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.addSubview(self.refreshControl)
         tableView?.dataSource = self
         tableView?.delegate = self
-        loadData()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         let stanDefaults = UserDefaults.standard
-        print(stanDefaults.string(forKey: "quiz_url"))
+        let url = stanDefaults.string(forKey: "quiz_url") ?? "https://tednewardsandbox.site44.com/questions.json"
+        if (url == "") {
+            HomeViewController.urlString = "https://tednewardsandbox.site44.com/questions.json"
+            UserDefaults.standard.set("https://tednewardsandbox.site44.com/questions.json", forKey: "quiz_url")
+        } else {
+             HomeViewController.urlString = url
+        }
+        
+        loadData(HomeViewController.urlString)
     }
 
 

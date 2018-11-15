@@ -8,19 +8,13 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string></string>
-			<key>Title</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
 			<string>Quiz URL</string>
 			<key>Key</key>
 			<string>quiz_url</string>
 			<key>DefaultValue</key>
-			<string></string>
+			<string>https://tednewardsandbox.site44.com/questions.json</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -36,9 +30,17 @@
 			<key>Title</key>
 			<string>Enabled</string>
 			<key>Key</key>
-			<string>enabled_preference</string>
+			<string>auto_refresh_on</string>
 			<key>DefaultValue</key>
 			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Auto Refresh Interval</string>
+			<key>Key</key>
+			<string>auto_refresh_interval</string>
 		</dict>
 	</array>
 </dict>

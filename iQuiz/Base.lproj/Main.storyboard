@@ -472,6 +472,9 @@
                                                 <rect key="frame" x="16" y="7" width="79" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Check Now"/>
+                                                <connections>
+                                                    <action selector="onCheckNowPressed:" destination="WZS-4p-3Ab" eventType="touchUpInside" id="ESh-QQ-fgm"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="Mrs-Vg-WK5">
@@ -479,6 +482,9 @@
                                                 <rect key="frame" x="311" y="7" width="48" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="WZS-4p-3Ab" eventType="touchUpInside" id="iad-uB-gjO"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -493,7 +499,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dPX-Wf-OVe">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dPX-Wf-OVe">
                                         <rect key="frame" x="117" y="20" width="244" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -520,7 +526,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLM-dt-I8u">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLM-dt-I8u">
                                         <rect key="frame" x="149" y="20" width="212" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -542,7 +548,7 @@
                                 <rect key="frame" x="-1" y="132" width="375" height="71"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Refresh On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6S-3A-M9F">
-                                        <rect key="frame" x="20" y="25" width="126" height="21"/>
+                                        <rect key="frame" x="20" y="25" width="294" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -559,14 +565,13 @@
                                     <constraint firstAttribute="bottom" secondItem="A6S-3A-M9F" secondAttribute="bottom" constant="25" id="JWd-qR-13d"/>
                                     <constraint firstItem="A6S-3A-M9F" firstAttribute="top" secondItem="3gk-Ww-8jB" secondAttribute="top" constant="25" id="Rmg-Vi-QKx"/>
                                     <constraint firstAttribute="trailing" secondItem="cNo-lW-RvG" secondAttribute="trailing" constant="12" id="XLf-ke-XFK"/>
-                                    <constraint firstItem="cNo-lW-RvG" firstAttribute="leading" secondItem="A6S-3A-M9F" secondAttribute="trailing" constant="168" id="f4V-cK-NJz"/>
+                                    <constraint firstItem="cNo-lW-RvG" firstAttribute="leading" secondItem="A6S-3A-M9F" secondAttribute="trailing" id="f4V-cK-NJz"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="X8l-v9-7HX" firstAttribute="leading" secondItem="P0Q-8P-rNd" secondAttribute="leading" constant="2" id="78t-8l-uEl"/>
-                            <constraint firstItem="X8l-v9-7HX" firstAttribute="bottom" secondItem="gfk-1Z-lO4" secondAttribute="bottom" constant="37" id="HFl-IT-VWY"/>
                             <constraint firstItem="X8l-v9-7HX" firstAttribute="trailing" secondItem="3gk-Ww-8jB" secondAttribute="trailing" constant="1" id="Mic-zz-1Gx"/>
                             <constraint firstItem="3gk-Ww-8jB" firstAttribute="top" secondItem="P0Q-8P-rNd" secondAttribute="bottom" constant="-4" id="Pd1-Wv-XWq"/>
                             <constraint firstItem="gfk-1Z-lO4" firstAttribute="top" secondItem="3gk-Ww-8jB" secondAttribute="bottom" constant="-10" id="Prp-0S-r95"/>
@@ -578,7 +583,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X8l-v9-7HX"/>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
                     <size key="freeformSize" width="375" height="300"/>
+                    <connections>
+                        <outlet property="autoRefreshInterval" destination="iLM-dt-I8u" id="P6u-zl-eVq"/>
+                        <outlet property="autoRefreshOn" destination="cNo-lW-RvG" id="kmp-Y5-8gf"/>
+                        <outlet property="quizURL" destination="dPX-Wf-OVe" id="RiC-9s-vFR"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="settingsToHome" id="4MO-7W-WjJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAa-wH-ofS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -587,6 +599,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="KWh-sd-ufz"/>
-        <segue reference="Edp-LQ-oNf"/>
+        <segue reference="4MO-7W-WjJ"/>
     </inferredMetricsTieBreakers>
 </document>

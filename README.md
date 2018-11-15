@@ -16,7 +16,7 @@
 - Download JSON [Done]
 - Store JSON locally  [Done]
 - Use local storage when offline  [Done]
-- Download latest JSON when user presses "Settings" and then "Check Now" 
+- Download latest JSON when user presses "Settings" and then "Check Now" [Done]
 - Offline Notification: Notify user if network is offline when user tries to pull down JSON  [Done]
-- Settings: Settings are stored in iPhone's Setting stock app 
+- Settings: Settings are stored in iPhone's Setting stock app [Done]
 - Download Fail: Display an error dialog if download fails  [Done]
