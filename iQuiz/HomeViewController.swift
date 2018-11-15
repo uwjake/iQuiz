@@ -73,7 +73,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let optionsVC = storyboard.instantiateViewController(
-            withIdentifier: "PopoverViewController")
+            withIdentifier: "SettingsViewController")
         
         // Use the popover presentation style for your view controller.
         optionsVC.modalPresentationStyle = .popover
@@ -221,6 +221,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView?.delegate = self
         loadData()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let stanDefaults = UserDefaults.standard
+        print(stanDefaults.string(forKey: "quiz_url"))
     }
 
 

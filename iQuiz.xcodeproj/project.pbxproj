@@ -21,6 +21,7 @@
 		236DC82E218FC5CE0012FA51 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DC82D218FC5CE0012FA51 /* Questions.swift */; };
 		236DC830218FDA5C0012FA51 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */; };
 		2382EE87219010DF00946DB8 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382EE86219010DF00946DB8 /* ResultViewController.swift */; };
+		23DADC98219D2CCE00A47AEB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DADC97219D2CCE00A47AEB /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		236DC82D218FC5CE0012FA51 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		2382EE86219010DF00946DB8 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		23DADC97219D2CCE00A47AEB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				23438E1A2185899800D8D5BE /* AppDelegate.swift */,
 				23438E1C2185899800D8D5BE /* HomeViewController.swift */,
 				230726C521992C8F009D2C00 /* PopoverViewController.swift */,
+				23DADC97219D2CCE00A47AEB /* SettingsViewController.swift */,
 				231B12912193E54700742B3E /* Settings.bundle */,
 				236DC82F218FDA5C0012FA51 /* AnswerViewController.swift */,
 				23438E1E2185899800D8D5BE /* Main.storyboard */,
@@ -286,6 +289,7 @@
 				231729CD218FA0390027D5DD /* QuestionViewController.swift in Sources */,
 				236DC82E218FC5CE0012FA51 /* Questions.swift in Sources */,
 				2328CF812187F91700B45978 /* AppData.swift in Sources */,
+				23DADC98219D2CCE00A47AEB /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

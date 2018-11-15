@@ -12,7 +12,6 @@ class PopoverViewController: UIViewController, UIPopoverPresentationControllerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("pop over loaded")
         subjectLabel.text = HomeViewController.currentSubject
         scoreLabel.text = "\(HomeViewController.numCorrect) / \(HomeViewController.totalQuestion) correct"
         // Do any additional setup after loading the view.
