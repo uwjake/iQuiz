@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         super.viewDidLoad()
         
         let settings = UserDefaults.standard
-        quizURL.insertText(settings.string(forKey: "quiz_url") ?? "https://tednewardsandbox.site44.com/questions.json")
+        quizURL.insertText(settings.string(forKey: "quiz_url") ?? HomeViewController.defaultURL)
         autoRefreshOn.isOn = settings.bool(forKey: "auto_refresh_on")
         autoRefreshInterval.text = settings.string(forKey: "auto_refresh_interval")
         
@@ -31,17 +31,37 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
     @IBAction func onCheckNowPressed(_ sender: UIButton) {
         
         let stanDefaults = UserDefaults.standard
-        
-        stanDefaults.set(quizURL.text ?? "https://tednewardsandbox.site44.com/questions.json", forKey: "quiz_url")
+        var url = quizURL.text ?? HomeViewController.defaultURL
+        if url == "" {
+            url = HomeViewController.defaultURL
+        }
+        stanDefaults.set(url, forKey: "quiz_url")
         stanDefaults.set(autoRefreshOn.isOn, forKey: "auto_refresh_on")
-        stanDefaults.set(autoRefreshInterval.text ?? "", forKey: "auto_refresh_interval")
+        
+        var interval = autoRefreshInterval.text ?? ""
+        if interval == "" || Double(interval) == nil {
+            interval = "30"
+        }
+        
+        stanDefaults.set(interval, forKey: "auto_refresh_interval")
         
         
         HomeViewController.urlString = quizURL.text ?? ""
         
 //        print("set", stanDefaults.value(forKey: "quiz_url"))
         
+        let tmpController :UIViewController! = self
+        
         performSegue(withIdentifier: "settingsToHome", sender: sender)
+        
+        self.dismiss(animated: false, completion: {()->Void in
+            tmpController.dismiss(animated: false, completion: nil);
+        });
+        
+    
+        
+        
+        
     }
     
     

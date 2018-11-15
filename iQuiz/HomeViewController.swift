@@ -12,12 +12,13 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
+    public static let defaultURL = "https://tednewardsandbox.site44.com/questions.json"
     public static var questions = Questions.Questions()
     public static var currentQuestion = 0
     public static var currentSubject = "Science"
     public static var totalQuestion = 0
     public static var numCorrect = 0
-    public static var urlString = "https://tednewardsandbox.site44.com/questions.json"
+    public static var urlString = defaultURL
     
     var subjectNames = ["Mathematics", "Marvel Super Heroes", "Science"]
     var subjectDescriptions = ["Think yourself as a calculator",
@@ -38,6 +39,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = UITableViewCell(style: .subtitle, reuseIdentifier: "Row")
         row.imageView?.image = UIImage(named: subjectIcons[indexPath.row])
+        row.textLabel?.text = "asdf"
         row.textLabel?.text = subjectNames[indexPath.row]
         
         row.detailTextLabel?.text = subjectDescriptions[indexPath.row]
@@ -129,15 +131,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
 //       print("refreshing")
-        showToast(message: "Updaitng", remove_refresher: true)
+        showToast(message: "Loading", remove_refresher: true)
         loadData(HomeViewController.urlString)
     }
     
     func loadData(_ url: String) {
         
-
         print("Loading data")
-        let request = URLSession.shared.dataTask(with: URL(string: url)!) {
+            var safe_url = URL(string: url)
+        if safe_url == nil {
+            HomeViewController.urlString = HomeViewController.defaultURL
+            showToast(message: "Invalid URL")
+            safe_url = URL(string: HomeViewController.defaultURL)
+        }
+            let request = URLSession.shared.dataTask(with: safe_url!) {
             (data, response, error) in
             
             guard let dataResponse = data,
@@ -170,9 +177,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
             request.resume()
+        
       
        
-        
     }
     
     func initData(jsonResponse: [Dictionary<String,AnyObject>]) {
@@ -181,14 +188,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         HomeViewController.questions = Questions.Questions()
         subjectNames = []
         subjectDescriptions = []
+        
+        
+        
+        if jsonResponse[0]["icon"] != nil {
+            subjectIcons = []
+        }
+        
         for subject in jsonResponse {
             let subjectName = subject["title"] as! String
             self.subjectNames.append(subjectName)
+            
+            if subject["icon"] != nil {
+                subjectIcons.append(subject["icon"] as! String)
+                print(subject["icon"])
+            } else {
+                
+            }
+            
             self.subjectDescriptions.append(subject["desc"] as! String)
             for q in subject["questions"] as! [Dictionary<String, AnyObject>] {
                 HomeViewController.questions.addQ(subjectName, q["text"] as! String, q["answers"] as! [String], q["answer"] as! String)
             }
         }
+//        showToast(message: "Data Loaded")
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -221,20 +244,39 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView?.dataSource = self
         tableView?.delegate = self
         
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
         
         let stanDefaults = UserDefaults.standard
-        let url = stanDefaults.string(forKey: "quiz_url") ?? "https://tednewardsandbox.site44.com/questions.json"
+        let url = stanDefaults.string(forKey: "quiz_url") ?? HomeViewController.defaultURL
         if (url == "") {
-            HomeViewController.urlString = "https://tednewardsandbox.site44.com/questions.json"
-            UserDefaults.standard.set("https://tednewardsandbox.site44.com/questions.json", forKey: "quiz_url")
+            HomeViewController.urlString = HomeViewController.defaultURL
+            UserDefaults.standard.set(HomeViewController.defaultURL, forKey: "quiz_url")
         } else {
              HomeViewController.urlString = url
         }
         
-        loadData(HomeViewController.urlString)
+        var timer = Timer()
+        if stanDefaults.bool(forKey: "auto_refresh_on") {
+            let interval = Double(stanDefaults.string(forKey: "auto_refresh_interval") ?? "30")
+            timer = Timer.scheduledTimer(timeInterval: interval ?? 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        } else {
+            timer.invalidate()
+            print("closed", stanDefaults.bool(forKey: "auto_refresh_on"))
+            timer = Timer()
+        }
+       
+        
+        
+        handleRefresh(refreshControl)
     }
 
+    @objc func update() {
+        print("Auto refresh")
+       handleRefresh(refreshControl)
+        
+    }
 
 }
 

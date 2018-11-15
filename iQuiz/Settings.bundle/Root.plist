@@ -37,6 +37,8 @@
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
+			<key>DefaultValue</key>
+			<string>30</string>
 			<key>Title</key>
 			<string>Auto Refresh Interval</string>
 			<key>Key</key>

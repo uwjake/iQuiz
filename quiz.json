@@ -51,7 +51,9 @@
         }
       ]
     },
-    { "title":"Mathematics", "desc":"Did you pass the third grade?",
+    { "title":"Mathematics",
+      "desc":"Did you pass the third grade?",
+      "icon": "math_icon",
       "questions":[
          {
            "text":"What is 2 * 2?",
